@@ -17,8 +17,12 @@ class App extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const newToDo = {description: this.state.newToDoDescription , isCompleted: false};
-    this.setState({todos : [...this.state.todos, newToDo], newToDoDescription: ''});
+    if (this.state.newToDoDescription !== '') {
+      const newToDo = {description: this.state.newToDoDescription , isCompleted: false};
+      this.setState({todos : [...this.state.todos, newToDo], newToDoDescription: ''});
+    } else {
+      return;
+    }
   }
   handleChange(e) {
     this.setState({newToDoDescription : e.target.value});
@@ -52,7 +56,7 @@ class App extends Component {
         </form>
         <ul>
           { this.state.todos.map( (todo,index) =>
-            <ToDo key={index} description={todo.description} isCompleted={todo.isCompleted} toggleComplete={ ()=> this.toggleComplete(index)} deleteItem={(e)=> this.handleClick(index)}/>
+            <ToDo key={index} description={todo.description} isCompleted={todo.isCompleted} id={todo.description} toggleComplete={ ()=> this.toggleComplete(index)} deleteItem={(e)=> this.handleClick(index)}/>
           )}
         </ul>
       </div>

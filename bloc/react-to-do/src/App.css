@@ -125,6 +125,7 @@
 .App li {
   list-style-type: none;
   border-bottom: 1px solid rgba(180, 180, 180, 0.5);
+  width: 100%;
 }
 .checkboxTwo {
   float: left;
